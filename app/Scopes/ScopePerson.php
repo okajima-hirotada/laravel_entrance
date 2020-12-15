@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 class ScopePerson implements Scope{
     public function apply(Builder $builder, Model $model)
    {
-       $builder->where('age', '>', 20);
+       $builder->where('age', '<', 20);
    }
 }

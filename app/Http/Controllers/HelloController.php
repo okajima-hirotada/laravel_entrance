@@ -141,7 +141,9 @@ class HelloController extends Controller
 
 
     public function index(){
-        return view('hello.index');
+        // return view('hello.index');
+        $items = DB::table('people')->simplePaginate(5);
+        return view('hello.index', ['items'=>$items]);
     }
 
     // public function post(Request $request){
@@ -224,6 +226,21 @@ class HelloController extends Controller
         // // ];
         // // $this->validate($request, $validate_rule);
         // return view('hello.form',['msg'=>'正しく入力されました！']);
+    }
+
+    public function rest(Request $request){
+        return view('hello.rest');
+    }
+
+    public function ses_get(Request $request){
+        $sesdata = $request->session()->get('msg');
+        return view('hello.session', ['session_data'=>$sesdata]);
+    }
+
+    public function ses_put(Request $request){
+        $msg = $request->input;
+        $request->session()->put('msg', $msg);
+        return redirect('hello/session');
     }
 }
 

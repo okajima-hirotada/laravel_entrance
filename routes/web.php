@@ -71,7 +71,7 @@ Route::get('/', function () {
 // Route::get('index', 'HelloController@index');
 // Route::get('index/other', 'HelloController@other');
 
-Route::get('index', 'HelloController@index');
+Route::get('hello/index', 'HelloController@index');
 Route::post('index', 'HelloController@post');
 Route::get('sample', 'HelloController@sample');
 // Route::get('inhe', 'HelloController@inhe');
@@ -88,6 +88,10 @@ Route::post('form', 'HelloController@post');
 Route::get('cockie', 'HelloController@cockie');
 Route::post('cockie', 'HelloController@cpost');
 Route::get('show', 'HelloController@show');
+
+Route::get('hello/rest', 'HelloController@rest');
+
+
 Route::get('person', 'PersonController@index');
 Route::get('person/find', 'PersonController@find');
 Route::post('person/find', 'PersonController@search');
@@ -95,5 +99,22 @@ Route::post('person/find', 'PersonController@search');
 //  -> middleware(HelloMiddleware::class);
 
 // Route::get('hello', function() {
-//     return view('hello.index');
+//     return view('hello.index');z
 // });
+
+Route::get('person/add', 'PersonController@add');
+Route::post('person/add', 'PersonController@create');
+Route::get('person/edit', 'PersonController@edit');
+Route::post('person/edit', 'PersonController@update');
+Route::get('person/del', 'PersonController@delete');
+Route::post('person/del', 'PersonController@remove');
+
+
+Route::get('board', 'BoardController@index');
+Route::get('board/add', 'BoardController@add');
+Route::post('board/add', 'BoardController@create');
+
+Route::resource('rest', 'RestappController');
+
+Route::get('hello/session', 'HelloController@ses_get');
+Route::post('hello/session', 'HelloController@ses_put');
